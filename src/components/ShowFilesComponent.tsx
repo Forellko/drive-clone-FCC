@@ -9,14 +9,15 @@ export default function ShowFiles() {
     <div className="m-5 mt-20 grid w-[100%] grid-cols-4 justify-between gap-10">
       {fileList.map((element) => {
         return (
-          <Image
-            className="max-w-none object-cover"
-            key={element.id}
-            src={element.imageLink}
-            alt="image"
-            width={300}
-            height={300}
-          />
+          <div key={element.id} className="h-[300px] w-[300px] overflow-hidden">
+            <Image
+              className="max-h-full min-w-full"
+              src={element.imageLink}
+              alt="image"
+              width={500}
+              height={500}
+            />
+          </div>
         );
       })}
     </div>
