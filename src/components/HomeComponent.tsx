@@ -6,7 +6,7 @@ function HomeComponent() {
   const { data: session } = useSession();
 
   return (
-    <div>
+    <div className="absolute right-5 top-5 cursor-pointer">
       {session ? (
         <Image
           src={session.user.image ?? ""}
@@ -14,10 +14,10 @@ function HomeComponent() {
           onClick={() => signOut()}
           width={100}
           height={100}
-          className="absolute right-5 top-5 cursor-pointer rounded-lg"
+          className=" rounded-lg"
         />
       ) : (
-        <button className="btn absolute right-5 top-5" onClick={() => signIn()}>
+        <button className="btn" onClick={() => signIn()}>
           Sign in
         </button>
       )}
