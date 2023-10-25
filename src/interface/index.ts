@@ -6,4 +6,5 @@ interface GithubAuth {
 interface ImageFile {
   id: string;
   imageLink: string;
+  imageName: string;
 }

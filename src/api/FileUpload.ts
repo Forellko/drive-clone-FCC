@@ -16,7 +16,7 @@ export const fileUpload = (file: File) => {
     },
     () => {
       void getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        addFiles(downloadURL);
+        addFiles(downloadURL, file.name);
       });
     },
   );
