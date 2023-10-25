@@ -1,10 +1,12 @@
-import React, { MouseEventHandler, useState } from "react";
+import React, { type ChangeEventHandler, useState } from "react";
+
+
 
 export default function UploadFilesComponent() {
   const [isFileOpen, setIsFileOpen] = useState(false);
   const [file, setFile] = useState({});
-  const uploadFile: MouseEventHandler = (event) => {
-    console.log(event);
+  const uploadFile = (file: File | undefined | null) => {
+    if (!file) return;
   };
 
   return (
@@ -19,6 +21,10 @@ export default function UploadFilesComponent() {
         <input
           type="file"
           className="file-input file-input-bordered file-input-primary w-full max-w-xs"
+          onChange={(event) => {
+            if (!event?.target?.files) return;
+            uploadFile(event?.target?.files[0]);
+          }}
         />
       )}
       <button className="btn btn-primary m-3">Create a Folder</button>
