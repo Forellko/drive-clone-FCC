@@ -1,12 +1,25 @@
-import React, { type ChangeEventHandler, useState } from "react";
+import React, { useState } from "react";
 import { fileUpload } from "~/api/FileUpload";
+import { addFolder } from "~/api/Firestore";
 
 export default function UploadFilesComponent() {
   const [isFileOpen, setIsFileOpen] = useState(false);
+  const [isFolderOpen, setIsFolderOpen] = useState(false);
+  const [folderName, setFolderName] = useState("");
   const [file, setFile] = useState({});
   const uploadFile = (file: File | undefined | null) => {
     if (!file) return;
     fileUpload(file);
+  };
+
+  const uploadFolder = () => {
+    const payload: { folderName: string; fileList: [] } = {
+      folderName,
+      fileList: [],
+    };
+    addFolder(payload);
+    setIsFolderOpen(false);
+    setFolderName("");
   };
 
   return (
@@ -27,7 +40,29 @@ export default function UploadFilesComponent() {
           }}
         />
       )}
-      <button className="btn btn-primary m-3">Create a Folder</button>
+      <button
+        className="btn btn-primary m-3"
+        onClick={() => setIsFolderOpen((prev) => !prev)}
+      >
+        Create a Folder
+      </button>
+      {isFolderOpen && (
+        <>
+          <input
+            type="text"
+            placeholder="Type here"
+            className="input input-bordered input-primary w-full max-w-xs"
+            onChange={(event) => setFolderName(event.target.value)}
+          />
+
+          <button
+            className="btn btn-primary m-3"
+            onClick={() => uploadFolder()}
+          >
+            Create
+          </button>
+        </>
+      )}
     </div>
   );
 }

@@ -18,13 +18,12 @@ export default function ShowFiles() {
             key={file.id}
             className="h-[300px] w-[300px] overflow-hidden"
           >
-            <p>{file.imageName}</p>
             <Image
-              className="max-h-full min-w-full"
+              className="max-h-80 min-h-full min-w-full max-w-xs "
               src={file.imageLink}
               alt="image"
-              width={500}
-              height={500}
+              width={100000}
+              height={100000}
             />
           </div>
         );
