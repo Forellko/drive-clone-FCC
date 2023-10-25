@@ -1,12 +1,12 @@
 import React, { type ChangeEventHandler, useState } from "react";
-
-
+import { fileUpload } from "~/api/FileUpload";
 
 export default function UploadFilesComponent() {
   const [isFileOpen, setIsFileOpen] = useState(false);
   const [file, setFile] = useState({});
   const uploadFile = (file: File | undefined | null) => {
     if (!file) return;
+    fileUpload(file);
   };
 
   return (

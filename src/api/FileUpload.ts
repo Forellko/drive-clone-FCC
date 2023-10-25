@@ -1,5 +1,6 @@
-import { storage, app, database } from "~/firebaseConfig";
+import { storage } from "~/firebaseConfig";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { addFiles } from "./Firestore";
 
 export const fileUpload = (file: File) => {
   const storageRef = ref(storage, `files/${file.name}`);
@@ -8,16 +9,14 @@ export const fileUpload = (file: File) => {
   uploadTask.on(
     "state_changed",
     (snapshot) => {
-      const progress = Math.round(
-        (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
-      );
+      console.log(snapshot);
     },
     (error) => {
       alert(error);
     },
     () => {
       void getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        console.log("1");
+        addFiles(downloadURL);
       });
     },
   );
