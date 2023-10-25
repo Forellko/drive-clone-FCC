@@ -14,7 +14,7 @@ function HomeComponent() {
           onClick={() => signOut()}
           width={100}
           height={100}
-          className="absolute right-5 top-5"
+          className="absolute right-5 top-5 cursor-pointer rounded-lg"
         />
       ) : (
         <button className="btn absolute right-5 top-5" onClick={() => signIn()}>
