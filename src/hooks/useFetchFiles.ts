@@ -7,7 +7,7 @@ const files = collection(database, "files");
 export const fetchFiles = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [fileList, setFileList] = useState<ImageFile[]>([
-    { id: "", imageLink: "", imageName: "" },
+    { id: "", imageLink: "", imageName: "", isFolder: true, folderName: "" },
   ]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
@@ -18,6 +18,8 @@ export const fetchFiles = () => {
             imageLink: item.data().imageLink as string,
             id: item.id,
             imageName: item.data().imageName as string,
+            isFolder: item.data().isFolder as boolean,
+            folderName: item.data().folderName as string,
           };
         }),
       );

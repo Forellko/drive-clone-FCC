@@ -7,4 +7,6 @@ interface ImageFile {
   id: string;
   imageLink: string;
   imageName: string;
+  folderName: string;
+  isFolder: boolean;
 }
