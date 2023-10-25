@@ -1,5 +1,6 @@
 import Head from "next/head";
 import HomeComponent from "~/components/HomeComponent";
+import ShowFiles from "~/components/ShowFiles";
 import UploadFilesComponent from "~/components/UploadFilesComponent";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <main>
         <HomeComponent />
         <UploadFilesComponent />
+        <ShowFiles />
       </main>
     </>
   );
