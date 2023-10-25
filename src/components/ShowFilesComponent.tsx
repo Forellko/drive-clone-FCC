@@ -23,7 +23,7 @@ export default function ShowFiles() {
             {file.isFolder ? (
               <>
                 <AiFillFolder
-                  onClick={() => router.push("/folder")}
+                  onClick={() => router.push(`/folder?id=${file.id}`)}
                   size={70}
                 />
                 <div>{file.folderName}</div>
