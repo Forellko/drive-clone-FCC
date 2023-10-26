@@ -13,10 +13,9 @@ export default function UploadFilesComponent({
   const [file, setFile] = useState({});
   const uploadFile = (file: File | undefined | null) => {
     if (!file) return;
-    fileUpload(file);
+    fileUpload(file, parentId);
   };
 
-  console.log(parentId);
   const uploadFolder = () => {
     const payload: { folderName: string; fileList: []; parentId: string } = {
       folderName,

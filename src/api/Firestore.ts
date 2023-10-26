@@ -3,9 +3,13 @@ import { collection, addDoc } from "firebase/firestore";
 
 const files = collection(database, "files");
 
-export const addFiles = (imageLink: string, imageName: string) => {
+export const addFiles = (
+  imageLink: string,
+  imageName: string,
+  parentId: string,
+) => {
   try {
-    void addDoc(files, { imageLink, imageName, isFolder: false });
+    void addDoc(files, { imageLink, imageName, isFolder: false, parentId });
   } catch (error) {
     console.log(error);
   }
