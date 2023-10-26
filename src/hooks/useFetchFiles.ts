@@ -5,7 +5,6 @@ import { database } from "~/firebaseConfig";
 const files = collection(database, "files");
 
 export const fetchFiles = (parentId: string) => {
-  console.log(parentId, "fetchFiles");
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [fileList, setFileList] = useState<ImageFile[]>([
     {
@@ -51,7 +50,6 @@ export const fetchFiles = (parentId: string) => {
               };
             })
             .filter((item) => {
-              console.log(item, "in filter");
               return item.parentId === parentId;
             }),
         );
@@ -61,7 +59,6 @@ export const fetchFiles = (parentId: string) => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    console.log("useeff", parentId);
     getFolders();
   }, [parentId]);
 
