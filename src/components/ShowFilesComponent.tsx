@@ -4,8 +4,8 @@ import { fetchFiles } from "~/hooks/useFetchFiles";
 import { AiFillFolder } from "react-icons/ai";
 import { useRouter } from "next/router";
 
-export default function ShowFiles() {
-  const { fileList } = fetchFiles();
+export default function ShowFiles({ parentId }: { parentId: string }) {
+  const { fileList } = fetchFiles(parentId);
   const router = useRouter();
 
   const openFile = (fileLink: string) => {

@@ -11,12 +11,17 @@ export const addFiles = (imageLink: string, imageName: string) => {
   }
 };
 
-export const addFolder = (payload: { folderName: string; fileList: [] }) => {
+export const addFolder = (payload: {
+  folderName: string;
+  fileList: [];
+  parentId: string;
+}) => {
   try {
     void addDoc(files, {
       folderName: payload.folderName,
       fileList: payload.fileList,
       isFolder: true,
+      parentId: payload.parentId,
     });
   } catch (error) {
     console.log(error);

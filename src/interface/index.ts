@@ -9,4 +9,5 @@ interface ImageFile {
   imageName: string;
   folderName: string;
   isFolder: boolean;
+  parentId: string;
 }

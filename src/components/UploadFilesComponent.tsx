@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { fileUpload } from "~/api/FileUpload";
 import { addFolder } from "~/api/Firestore";
 
-export default function UploadFilesComponent() {
+export default function UploadFilesComponent({
+  parentId,
+}: {
+  parentId: string;
+}) {
   const [isFileOpen, setIsFileOpen] = useState(false);
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [folderName, setFolderName] = useState("");
@@ -12,10 +16,12 @@ export default function UploadFilesComponent() {
     fileUpload(file);
   };
 
+  console.log(parentId);
   const uploadFolder = () => {
-    const payload: { folderName: string; fileList: [] } = {
+    const payload: { folderName: string; fileList: []; parentId: string } = {
       folderName,
       fileList: [],
+      parentId: parentId || "",
     };
     addFolder(payload);
     setIsFolderOpen(false);

@@ -13,8 +13,8 @@ export default function Home() {
       </Head>
       <main>
         <HomeComponent />
-        <UploadFilesComponent />
-        <ShowFilesComponent />
+        <UploadFilesComponent parentId="" />
+        <ShowFilesComponent parentId="" />
       </main>
     </>
   );
