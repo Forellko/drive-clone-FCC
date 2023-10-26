@@ -19,6 +19,7 @@ export const addFolder = (payload: {
   folderName: string;
   fileList: [];
   parentId: string;
+  userEmail: string;
 }) => {
   try {
     void addDoc(files, {
@@ -26,6 +27,7 @@ export const addFolder = (payload: {
       fileList: payload.fileList,
       isFolder: true,
       parentId: payload.parentId,
+      userEmail: payload.userEmail,
     });
   } catch (error) {
     console.log(error);

@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import { fileUpload } from "~/api/FileUpload";
 import { addFolder } from "~/api/Firestore";
@@ -11,16 +12,24 @@ export default function UploadFilesComponent({
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [folderName, setFolderName] = useState("");
   const [file, setFile] = useState({});
+  const { data: session } = useSession();
+
   const uploadFile = (file: File | undefined | null) => {
     if (!file) return;
     fileUpload(file, parentId);
   };
 
   const uploadFolder = () => {
-    const payload: { folderName: string; fileList: []; parentId: string } = {
+    const payload: {
+      folderName: string;
+      fileList: [];
+      parentId: string;
+      userEmail: string;
+    } = {
       folderName,
       fileList: [],
       parentId: parentId || "",
+      userEmail: session?.user.email ?? "",
     };
     addFolder(payload);
     setIsFolderOpen(false);
